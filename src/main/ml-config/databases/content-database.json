@@ -1,0 +1,50 @@
+{
+  "database-name" : "project-move-content",
+  "range-element-index":[
+    {
+      "scalar-type":"date", 
+      "collation":"",
+      "namespace-uri":"", 
+      "localname":"date", 
+      "range-value-positions":false, 
+      "invalid-values":"reject"
+    },
+    {
+      "scalar-type":"string",
+      "collation":"http://marklogic.com/collation/en/S1",
+      "namespace-uri":"", 
+      "localname":"countryCode", 
+      "range-value-positions":false, 
+      "invalid-values":"reject"
+    },
+    {
+      "scalar-type":"int",
+      "collation":"",
+      "namespace-uri":"", 
+      "localname":"responseCode", 
+      "range-value-positions":false, 
+      "invalid-values":"reject"
+    },
+    {
+      "scalar-type":"string",
+      "collation":"http://marklogic.com/collation/en/S1",
+      "namespace-uri":"", 
+      "localname":"domain", 
+      "range-value-positions":false, 
+      "invalid-values":"reject"
+    }
+  ],
+  "geospatial-element-pair-index": [
+    {
+      "parent-namespace-uri":"",
+      "parent-localname":"root",
+      "latitude-namespace-uri":"",
+      "latitude-localname":"lat",
+      "longitude-namespace-uri":"",
+      "longitude-localname":"long",
+      "coordinate-system":"wgs84",
+      "range-value-positions":false,
+      "invalid-values":"reject"
+    }
+  ]
+}

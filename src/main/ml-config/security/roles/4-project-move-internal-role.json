@@ -1,0 +1,5 @@
+{
+  "role-name" : "project-move-internal",
+  "description" : "Internal role used for amping",
+  "role" : [ "project-move-writer" ]
+}

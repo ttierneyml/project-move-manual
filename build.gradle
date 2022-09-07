@@ -1,0 +1,92 @@
+plugins {
+  id "net.saliman.properties" version "1.5.1"
+  id "com.marklogic.ml-gradle" version "4.3.5"
+}
+
+repositories {
+  mavenCentral()
+  maven { url "https://developer.marklogic.com/maven2/" }
+}
+
+configurations {
+  mlcp
+}
+
+dependencies {
+  mlcp "com.marklogic:mlcp:10.0.6.2"
+}
+
+task getZip(type: DownloadZip){
+  doLast{
+    println "it did the things"
+  }
+}
+
+task ingestData(type: Exec){
+  dependsOn getZip
+  workingDir "/Users/ttierney/Code/project-move"
+  commandLine './everythingShell.sh'
+}
+
+task modifyData(type: Exec){
+  workingDir "/Users/ttierney/Code/project-move"
+  commandLine './modify.sh'
+}
+
+task doTheThing{
+  dependsOn ingestData
+  dependsOn modifyData
+  modifyData.mustRunAfter(ingestData)
+}
+
+/*
+task getZip(type: DownloadZip){
+  filePath = "/Users/ttierney/Code/project-move/GDELTData.CSV.zip"
+  doLast{
+    println "downloaded zip file"
+  }
+}
+
+task unzip(type: Unzip){
+  doLast{
+    println "file unzipped and moved"
+  }
+}
+
+task addHeader(type: AddHeader){
+  doLast{
+    println "unzipped and added header"
+  }
+}
+
+task mlcpIngest(type: APIImport){
+  doLast{
+    println "uploaded to marklogic"
+  }
+}
+
+task mlcpImport(type: com.marklogic.gradle.task.MlcpTask) {
+  dependsOn addHeader
+  classpath = configurations.mlcp
+  command = "IMPORT"
+  port = 8003
+  mode = "local"
+  database = "project-move-content"
+  input_file_path = "/Users/ttierney/Code/project-move/data_ingest/GDELTData.CSV"
+  input_file_type = "delimited_text"
+  delimiter = "\t"
+  document_type ="xml"
+  output_uri_prefix = "/news/" 
+  uri_id = "GLOBALEVENTID"
+  output_collections = "raw, news, from_csv"
+}
+
+task ingestData{
+  dependsOn getZip
+  dependsOn addHeader
+  dependsOn unzip
+  dependsOn mlcpImport
+  unzip.mustRunAfter  getZip
+  addHeader.mustRunAfter  unzip
+  mlcpImport.mustRunAfter addHeader
+}*/

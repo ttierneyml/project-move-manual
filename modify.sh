@@ -1,0 +1,1 @@
+java -server -cp .:marklogic-xcc-10.0.9.jar:marklogic-corb-2.5.4.jar  -DXCC-CONNECTION-URI=xcc://admin:admin@localhost:8004/project-move-content -DTHREAD-COUNT=128 -DURIS-MODULE=uris.xqy\|ADHOC -DPROCESS-MODULE=transformation.xqy\|ADHOC com.marklogic.developer.corb.Manager
